@@ -9,6 +9,8 @@ Assuming you have
 - [ ] the latest [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed and 
 - [ ] the latest [Debian ISO file](https://www.debian.org/distrib/) - debian-9.4.0-i386-netinst.iso (377MB) downloaded
 
+Note to self: i386 is wrong image, this is 32 bit
+
 # Creating the image
 
 Start VirtualBox, 
@@ -42,4 +44,48 @@ Start VirtualBox,
   - virtualbox-ose-guest-x11 (sweet how that autodetects)
 - GRUB Bootloader to master boot record on /dev/sda
 
-Done
+Done, after reboot I get a shell
+
+- Check version
+```bash
+cat /etc/issue
+Debian GNU/Linux 9 \n \l
+```
+
+- Install ifconfig, netstat etc
+```bash
+apt-get install net-tools
+```
+
+- List active ports (need root for p flag)
+
+```bash
+netstat -lptn
+```
+
+- Install sshd
+```bash
+apt-get install openssh-server
+```
+
+- Check IP address after changing network
+
+```bash
+ip address
+```
+
+Make sure you have host-only adapter
+
+# Install MongoDB
+
+Connect using putty, use dev, then su to root
+
+use shift-insert to paste commands in putty
+
+```bash
+apt-get install dirmngr
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+apt-get update
+apt-get install -y mongodb-org
+```
