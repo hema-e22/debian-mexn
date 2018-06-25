@@ -7,9 +7,9 @@ installation of a Debian full-JavaScript VM server MEXN = (MongoDB, Express, [Vu
 Assuming you have 
 
 - [ ] the latest [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed and 
-- [ ] the latest [Debian ISO file](https://www.debian.org/distrib/) - debian-9.4.0-i386-netinst.iso (377MB) downloaded
+- [ ] the latest [Debian ISO file](https://www.debian.org/distrib/) - debian-9.4.0-amd64-netinst.iso (291MB) downloaded
 
-Note to self: i386 is wrong image, this is 32 bit
+Note to self: debian-9.4.0-i386-netinst.iso is wrong image, this is 32 bit
 
 # Creating the image
 
