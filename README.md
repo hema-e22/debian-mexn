@@ -1,5 +1,6 @@
 # debian-mexn
-installation of a Debian full-JavaScript VM server
+
+installation of a Debian full-JavaScript VM server MEXN = (MongoDB, Express, [Vue, Angular, React, dhtmlx, AngularJS, jQuery, Ember, ...], Node)
 
 # Getting ready
 
@@ -17,5 +18,28 @@ Start VirtualBox,
 - I use VDI, dynamically allocated
 - mount the iso file in settings on the CD-drive and boot the image
 
+# Installing Debian
 
+- Install type: Graphical Install
+- Select language: English
+- Location: other, Europe, Netherlands
+- Locales: en_US.UTF-8
+- Keymap: American English
+- hostname: debian
+- domainname: local
+- root password: 
+- Partition disk: guided, entire disk
+- Separate /home /var /tmp
+- Don't scan for CD's
+- Debian mirror: Netherlands, ftp.nl.debian.org
+- No proxy
+- No stats send
+- flagged:
+  - Debian desktop environment: KDE
+  - ssh server
+  - standard utilities
+- Select and install software
+  - virtualbox-ose-guest-x11 (sweet how that autodetects)
+- GRUB Bootloader to master boot record on /dev/sda
 
+Done
