@@ -91,3 +91,94 @@ apt-get install -y mongodb-org
 systemctl enable mongod.service
 service mongod start
 ```
+
+## Testing
+```bash
+shutdown -r now
+root@debian:/home/dev# mongo
+MongoDB shell version v3.6.5
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.5
+Server has startup warnings:
+2018-06-27T19:31:36.381+0200 I STORAGE  [initandlisten]
+2018-06-27T19:31:36.381+0200 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2018-06-27T19:31:36.381+0200 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2018-06-27T19:31:38.066+0200 I CONTROL  [initandlisten]
+2018-06-27T19:31:38.066+0200 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-06-27T19:31:38.066+0200 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-06-27T19:31:38.066+0200 I CONTROL  [initandlisten]
+> show dbs;
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use admin
+switched to db admin
+> show collections;
+system.version
+> db.system.version.find({})
+{ "_id" : "featureCompatibilityVersion", "version" : "3.6" }
+> exit
+bye
+```
+
+# Install Node
+```bash
+apt-get install curl
+curl -sL https://deb.nodesource.com/setup_9.x | bash -
+apt-get install -y nodejs
+```
+
+## Testing
+```bash
+root@debian:/home/dev# node -v
+v9.11.2
+root@debian:/home/dev# npm -v
+5.6.0
+root@debian:/home/dev#
+```
+
+## Avoid EACCES errors
+
+@see [here] (https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+
+as dev
+
+```bash
+exit
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+source ~/.profile
+```
+
+Before we get something using npm, we need to install git as root
+
+```bash
+su
+apt-get install git
+exit
+```
+
+as dev
+
+```bash
+npm install -g jshint
+npm uninstall -g jshint
+```
+
+# Full Test
+
+as dev
+
+```bash
+git clone https://github.com/rkristelijn/dhtmlx-json-node.git
+cd dhtmlx-json-node
+npm i
+npm run seed
+CTRL+C
+npm start
+```
+
+# Git server
+
+`//todo` 
