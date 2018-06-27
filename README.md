@@ -139,7 +139,7 @@ root@debian:/home/dev#
 
 ## Avoid EACCES errors
 
-@see [here] (https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+@see [here](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
 
 as dev
 
