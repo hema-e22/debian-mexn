@@ -11,6 +11,32 @@ Assuming you have
 
 Note to self: debian-9.4.0-i386-netinst.iso is wrong image, this is 32 bit
 
+If you need Debian on a physical machine, easiest is to create a [bootable usb-stick](https://unix.stackexchange.com/questions/263615/how-to-create-a-bootable-debian-usb-drive-using-windows):
+
+## STEP 1
+
+Go to the website of the OS you wish to install, and find an iso image to download. In your case, since you want to run a Debian OS, here is a link to its iso options: [https://www.debian.org/distrib/netinst](https://www.debian.org/distrib/netinst)
+
+Choose an iso image from the options, and click on it. This should automatically start the image download. While file is downloading, go to second step.
+
+## STEP 2
+
+Get a utility program to format and create bootable USB flash drives. Some have already been suggested, so I will just link you to my favourite: [https://rufus.akeo.ie/](https://rufus.akeo.ie/)
+
+Download the utility and go to third step.
+
+## STEP 3
+
+By this stage, if your iso image has not yet finished downloading, then wait until it does.
+
+Now that you have both the utility and the iso image downloaded:
+
+1. Plug in your USB drive
+1. Open Rufus (to write your USB)
+1. Select the iso image you just downloaded to write on the USB, and fill out the other options accordingly (eg. selecting your USB drive etc)
+1. Click on the option for starting the write process (with Rufus, it is the "Start" button)
+Once Rufus finishes, simply reboot, booting from your USB, which should start up your Debian OS.
+
 # Creating the image
 
 Start VirtualBox, 
@@ -181,4 +207,115 @@ npm start
 
 # Git server
 
-`//todo` 
+`apt-get install git-core`
+
+# Add user to sudo
+add you user below root in `/etc/sudousers`
+
+and without password
+
+`my-awesome-user ALL=(ALL) NOPASSWD:ALL`
+
+# Graphical tools
+
+If you had X11 installed; here's my tips for LXDE
+
+## Add shortcuts:
+edit `~/.config/openbox/lxde-rc.xml`
+
+disable `<!-- Keybindings for desktop switching -->`
+### Use Windows + (Left|Right) to move windows to different monitors
+```xml
+<keybind key="W-Right">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>next</monitor>
+      </action>
+    </keybind>
+    <keybind key="W-Left">
+      <action name="MoveResizeTo">
+        <!-- move to next monitor -->
+        <monitor>prev</monitor>
+      </action>
+    </keybind>
+```
+### Use Ctrl + Alt + (1|2|3|4) to move windows a quarter of the screen
+```xml
+<keybind key="C-A-1">        # UpperQuarterLeft
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+
+    <keybind key="C-A-2">        # LowerQuarterLeft
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+
+    <keybind key="C-A-3">        # LowerQuarterRight
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>-0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+
+    <keybind key="C-A-4">        # UpperQuarterRight
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+```
+
+### Use Ctrl + Alt + (Left|Right) to move windows a left or right half
+```xml
+<keybind key="C-A-1">        # UpperQuarterLeft
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+
+    <keybind key="C-A-2">        # LowerQuarterLeft
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+
+    <keybind key="C-A-3">        # LowerQuarterRight
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>-0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+
+    <keybind key="C-A-4">        # UpperQuarterRight
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>50%</height><width>50%</width></action>
+    </keybind>
+```
+
+### Use Ctrl + Alt + (Up|Down) to move windows fullscreen and restore
+```xml
+    <keybind key="C-A-Up">        # FullScreen
+      <action name="Maximize"/>
+    </keybind>
+    <keybind key="C-A-Down">        # MiddleScreen
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>center</x><y>center</y><width>50%</width><height>50%</height></action>
+    </keybind>
+```
+
+### Miscelious Programs
+```xml
+<keybind key='W-t'>
+            <action name='Execute'>
+                <command>lxterminal</command>
+            </action>
+        </keybind>
+        <keybind key='C-A-t'>
+            <action name='Execute'>
+                <command>lxterminal</command>
+            </action>
+        </keybind>
+        <keybind key='C-A-i'>
+            <action name='Execute'>
+                <command>/usr/bin/google-chrome-stable %U</command>
+            </action>
+        </keybind>
+        <keybind key='W-i'>
+            <action name='Execute'>
+                <command>/usr/bin/google-chrome-stable %U</command>
+            </action>
+        </keybind>
+```
