@@ -318,4 +318,14 @@ disable `<!-- Keybindings for desktop switching -->`
                 <command>/usr/bin/google-chrome-stable %U</command>
             </action>
         </keybind>
+<keybind key='C-A-l'>
+            <action name='Execute'>
+                <command>leafpad %f</command>
+            </action>
+        </keybind>
+        <keybind key='W-l'>
+            <action name='Execute'>
+                <command>leafpad %f</command>
+            </action>
+        </keybind>
 ```
