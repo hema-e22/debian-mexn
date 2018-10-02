@@ -109,6 +109,7 @@ Make sure you have host-only adapter
 0. You need to have VirtualBox Guest Additions installed on your client machine
 1. You need to install Oracle VM VirtualBox Extension Pack
 2. You need to enable remote desktop in Oracle VM VirtualBox Manager for the client
+3. You need to start the guest headless
 3. You need to install xfreerdp 
 
 `apt-get install freerdp`
@@ -351,19 +352,20 @@ disable `<!-- Keybindings for desktop switching -->`
         </keybind>
 ```
 
-#Install Visual Studio code
+# Install Visual Studio code
 `sudo dpkg -i code_1.27.2-1536736588_amd64.deb`
-`sudo dpkg -i /path/to/deb/file`
-code_1.27.2-1536736588_amd64.deb  google-chrome-stable_current_amd64.deb
 
-#Install Chrome
+# Install Chrome
 `sudo dpkg -i google-chrome-stable_current_amd64.deb` 
 
 
-#Install Postman
+# Install Postman
 https://www.getpostman.com/apps
-tar -zxvf file.tar.gz
+`tar -zxvf Postman-linux-x64-6.3.0.tar.gz`
+mv Postman /usr/bin
 
-#Install Nomachine
+# Install Nomachine
+
+We don't need this, as we connect to the machine via VirtualBox
 https://www.nomachine.com/download
 
