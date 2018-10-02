@@ -102,6 +102,9 @@ ip address
 
 Make sure you have host-only adapter
 
+# Install VirtualBox Guest Additions
+[@see](https://www.linuxbabe.com/desktop-linux/how-to-install-virtualbox-guest-additions-on-debian-step-by-step)
+
 # Install MongoDB
 
 Connect using putty, use dev, then su to root
@@ -329,3 +332,20 @@ disable `<!-- Keybindings for desktop switching -->`
             </action>
         </keybind>
 ```
+
+#Install Visual Studio code
+`sudo dpkg -i code_1.27.2-1536736588_amd64.deb`
+`sudo dpkg -i /path/to/deb/file`
+code_1.27.2-1536736588_amd64.deb  google-chrome-stable_current_amd64.deb
+
+#Install Chrome
+`sudo dpkg -i google-chrome-stable_current_amd64.deb` 
+
+
+#Install Postman
+https://www.getpostman.com/apps
+tar -zxvf file.tar.gz
+
+#Install Nomachine
+https://www.nomachine.com/download
+
