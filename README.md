@@ -105,6 +105,20 @@ Make sure you have host-only adapter
 # Install VirtualBox Guest Additions
 [@see](https://www.linuxbabe.com/desktop-linux/how-to-install-virtualbox-guest-additions-on-debian-step-by-step)
 
+## Connect remotely from Linux with multi-monitor set-up
+0. You need to have VirtualBox Guest Additions installed on your client machine
+1. You need to install Oracle VM VirtualBox Extension Pack
+2. You need to enable remote desktop in Oracle VM VirtualBox Manager for the client
+3. You need to install xfreerdp 
+
+`apt-get install freerdp`
+
+Connect using:
+
+`xfreerdp /v:192.168.178.xxx:3389 -f /multimon`
+
+CTRL+ALT+ENTER to escape fullscreen
+
 # Install MongoDB
 
 Connect using putty, use dev, then su to root
