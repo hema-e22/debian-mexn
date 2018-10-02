@@ -226,6 +226,10 @@ If you had X11 installed; here's my tips for LXDE
 ## Add shortcuts:
 edit `~/.config/openbox/lxde-rc.xml`
 
+replace USER with your user
+
+`sudo code ~/.config/openbox/lxde-rc.xml --user-data-dir USER`
+
 disable `<!-- Keybindings for desktop switching -->`
 ### Use Windows + (Left|Right) to move windows to different monitors
 ```xml
