@@ -114,11 +114,18 @@ Make sure you have host-only adapter
 
 `apt-get install freerdp`
 
+## Connect from debian to Oracle VirtualBox
 Connect using:
 
 `xfreerdp /v:192.168.178.xxx:3389 -f /multimon`
 
 CTRL+ALT+ENTER to escape fullscreen
+
+## Connect from Windows 10 to Oracle VirtualBox
+
+start, run
+`mstsc /v:192.168.178.xxx /h:1080 /w:5760`
+
 
 # Install MongoDB
 
@@ -368,4 +375,7 @@ mv Postman /usr/bin
 
 We don't need this, as we connect to the machine via VirtualBox
 https://www.nomachine.com/download
+
+
+
 
