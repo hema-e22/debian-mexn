@@ -376,6 +376,11 @@ mv Postman /usr/bin
 We don't need this, as we connect to the machine via VirtualBox
 https://www.nomachine.com/download
 
+Settings virtual machine > Display > Remote Display > Enable: port: 3389
 
+- On Debian: use xfreerdp: `xfreerdp /v:192.168.178.xxx:3389 -f /multimon` (CTRL+ALT+ENTER to escape fullscreen)
+- On Window: start, run `mstsc /v:192.168.178.xxx /h:1080 /w:5760 /f /multimon`
 
+# Skype
 
+@see https://forums.mauilinux.org/showthread.php?tid=24347
