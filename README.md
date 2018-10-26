@@ -126,6 +126,20 @@ CTRL+ALT+ENTER to escape fullscreen
 start, run
 `mstsc /v:192.168.178.xxx /h:1080 /w:5760`
 
+## Virtualbox tips and tricks
+
+List all vm's:
+
+`VBoxManage list vms`
+
+List all settings of specific vm:
+
+`VBoxManage guestproperty enumerate vmname`
+
+List one setting of specific vm:
+
+`VBoxManage guestproperty get vmname "/VirtualBox/GuestInfo/Net/0/V4/IP"`
+
 
 # Install MongoDB
 
