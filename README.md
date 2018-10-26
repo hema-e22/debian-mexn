@@ -235,7 +235,7 @@ npm start
 `apt-get install git-core`
 
 # Add user to sudo
-add you user below root in `/etc/sudousers`
+add you user below root in `/etc/sudoers`
 
 and without password
 
