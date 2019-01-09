@@ -134,12 +134,19 @@ List all vm's:
 
 List all settings of specific vm:
 
-`VBoxManage guestproperty enumerate vmname`
+`VBoxManage guestproperty enumerate imagename`
 
 List one setting of specific vm:
 
-`VBoxManage guestproperty get vmname "/VirtualBox/GuestInfo/Net/0/V4/IP"`
+`VBoxManage guestproperty get imagename "/VirtualBox/GuestInfo/Net/0/V4/IP"`
 
+Start a vim:
+
+`vboxmanage startvm imagename`
+
+Set monitorcount
+
+`vboxmanage modifyvm imagename --monitorcount 2`
 
 # Install MongoDB
 
