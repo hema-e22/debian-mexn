@@ -255,6 +255,30 @@ npm start
 
 `apt-get install git-core`
 
+# Usermanagement
+
+Create a new user: 
+```bash
+sudo su -
+adduser username
+```
+
+Add user to sudo
+
+```bash
+usermod -aG sudo username
+```
+
+Delete a user:
+
+```bash
+sudo su -
+userdel username
+userdel -r username
+```
+
+@see remove user: https://nl.godaddy.com/help/remove-a-linux-user-19158
+
 # Add user to sudo
 add you user below root in `/etc/sudoers`
 
