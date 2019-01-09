@@ -262,25 +262,33 @@ If you had X11 installed; here's my tips for LXDE
 ## Add shortcuts:
 edit `~/.config/openbox/lxde-rc.xml`
 
-replace USER with your user
+replace USER with your user if you want to use Visual Studio Code
 
 `sudo code ~/.config/openbox/lxde-rc.xml --user-data-dir USER`
+
+But you might as well use `vi`, `vim` or `nano`
+
+after saving you can use
+
+`openbox --restart` 
+
+to reload
 
 disable `<!-- Keybindings for desktop switching -->`
 ### Use Windows + (Left|Right) to move windows to different monitors
 ```xml
 <keybind key="W-Right">
-      <action name="MoveResizeTo">
-        <!-- move to next monitor -->
-        <monitor>next</monitor>
-      </action>
-    </keybind>
-    <keybind key="W-Left">
-      <action name="MoveResizeTo">
-        <!-- move to next monitor -->
-        <monitor>prev</monitor>
-      </action>
-    </keybind>
+  <action name="MoveResizeTo">
+    <!-- move to next monitor -->
+    <monitor>next</monitor>
+  </action>
+</keybind>
+<keybind key="W-Left">
+  <action name="MoveResizeTo">
+    <!-- move to next monitor -->
+    <monitor>prev</monitor>
+  </action>
+</keybind>
 ```
 ### Use Ctrl + Alt + (1|2|3|4) to move windows a quarter of the screen
 ```xml
@@ -307,25 +315,24 @@ disable `<!-- Keybindings for desktop switching -->`
 
 ### Use Ctrl + Alt + (Left|Right) to move windows a left or right half
 ```xml
-<keybind key="C-A-1">        # UpperQuarterLeft
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action>
-    </keybind>
-
-    <keybind key="C-A-2">        # LowerQuarterLeft
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>50%</width></action>
-    </keybind>
-
-    <keybind key="C-A-3">        # LowerQuarterRight
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>-0</x><y>-0</y><height>50%</height><width>50%</width></action>
-    </keybind>
-
-    <keybind key="C-A-4">        # UpperQuarterRight
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>50%</height><width>50%</width></action>
-    </keybind>
+<keybind key='C-A-Left'># Left 50% of screen
+  <action name='UnmaximizeFull' />
+  <action name='MoveResizeTo'>
+    <x>0</x>
+    <y>0</y>
+    <height>100%</height>
+    <width>50%</width>
+  </action>
+</keybind>
+<keybind key='C-A-Right'># Right 50% of screen
+  <action name='UnmaximizeFull' />
+  <action name='MoveResizeTo'>
+    <x>-0</x>
+    <y>0</y>
+    <height>100%</height>
+    <width>50%</width>
+  </action>
+</keybind>
 ```
 
 ### Use Ctrl + Alt + (Up|Down) to move windows fullscreen and restore
@@ -342,50 +349,51 @@ disable `<!-- Keybindings for desktop switching -->`
 ### Miscelious Programs
 ```xml
 <keybind key='W-t'>
-            <action name='Execute'>
-                <command>lxterminal</command>
-            </action>
-        </keybind>
-        <keybind key='C-A-t'>
-            <action name='Execute'>
-                <command>lxterminal</command>
-            </action>
-        </keybind>
-        <keybind key='C-A-i'>
-            <action name='Execute'>
-                <command>/usr/bin/google-chrome-stable %U</command>
-            </action>
-        </keybind>
-        <keybind key='W-i'>
-            <action name='Execute'>
-                <command>/usr/bin/google-chrome-stable %U</command>
-            </action>
-        </keybind>
+    <action name='Execute'>
+        <command>lxterminal</command>
+    </action>
+</keybind>
+<keybind key='C-A-t'>
+    <action name='Execute'>
+        <command>lxterminal</command>
+    </action>
+</keybind>
+<keybind key='C-A-i'>
+    <action name='Execute'>
+        <command>/usr/bin/google-chrome-stable %U</command>
+    </action>
+</keybind>
+<keybind key='W-i'>
+    <action name='Execute'>
+        <command>/usr/bin/google-chrome-stable %U</command>
+    </action>
+</keybind>
 <keybind key='C-A-l'>
-            <action name='Execute'>
-                <command>leafpad %f</command>
-            </action>
-        </keybind>
-        <keybind key='W-l'>
-            <action name='Execute'>
-                <command>leafpad %f</command>
-            </action>
-        </keybind>
+    <action name='Execute'>
+        <command>leafpad %f</command>
+    </action>
+</keybind>
+<keybind key='W-l'>
+    <action name='Execute'>
+        <command>leafpad %f</command>
+    </action>
+</keybind>
 ```
 
-# Install Visual Studio code
+# Intsall programs
+
+## Install Visual Studio code
 `sudo dpkg -i code_1.27.2-1536736588_amd64.deb`
 
-# Install Chrome
+## Install Chrome
 `sudo dpkg -i google-chrome-stable_current_amd64.deb` 
 
-
-# Install Postman
+## Install Postman
 https://www.getpostman.com/apps
 `tar -zxvf Postman-linux-x64-6.3.0.tar.gz`
 mv Postman /usr/bin
 
-# Install Nomachine
+## Install Nomachine
 
 We don't need this, as we connect to the machine via VirtualBox
 https://www.nomachine.com/download
@@ -395,6 +403,26 @@ Settings virtual machine > Display > Remote Display > Enable: port: 3389
 - On Debian: use xfreerdp: `xfreerdp /v:192.168.178.xxx:3389 -f /multimon` (CTRL+ALT+ENTER to escape fullscreen)
 - On Window: start, run `mstsc /v:192.168.178.xxx /h:1080 /w:5760 /f /multimon`
 
-# Skype
+## Skype
+
+Use pidgin, but desktop sharing seems to be not possible
 
 @see https://forums.mauilinux.org/showthread.php?tid=24347
+
+## WebStorm 
+
+Note, this is proprietary software
+
+@see https://www.jetbrains.com/help/webstorm/install-and-set-up-product.html#install-on-linux-with-snaps
+
+## GitKraken
+
+@see https://www.gitkraken.com/download get the deb file and use `sudo dpkg -i`
+
+## Slack
+
+@see https://slack.com/downloads/linux get the deb file and use `sudo dpkg -i`
+
+## FileZilla FTP client
+
+@see https://packages.debian.org/en/jessie/filezilla for `sudo apt-get install filezilla` probably, but you can download the tar.gz file using `tar -zxvf `
