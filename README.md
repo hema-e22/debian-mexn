@@ -255,6 +255,26 @@ npm start
 
 `apt-get install git-core`
 
+# Tuning bash for git usage
+
+If you want to add the active branch on your prompt
+1. find out the current prompt `echo $PS1`
+2. update `~/.bashrc`, add to the end:
+
+```
+git_branch() {
+  git branch 2>/dev/null | grep '^*' | colrm 1 2
+}
+
+export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[33m\]\$(git_branch)\[\033[00m\] \$"
+```
+
+to reload it, type:
+
+```
+. ~/.bashrc
+```
+
 # Usermanagement
 
 Create a new user: 
