@@ -194,11 +194,14 @@ bye
 ```
 
 # Install Node
+as root (`sudo su -`)
 ```bash
 apt-get install curl
-curl -sL https://deb.nodesource.com/setup_9.x | bash -
+curl -sL https://deb.nodesource.com/setup_10.x | bash -
 apt-get install -y nodejs
 ```
+
+You can also safely upgrade from node 9.x to 10.x with above
 
 ## Testing
 ```bash
